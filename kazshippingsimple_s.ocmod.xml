@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+    <name>Kazshipping</name>
+    <code>kazshipping_simplecheckout_2.1</code>
+    <version>2.1.5(v2.0.x-2.3.x)(select)</version>
+    <author>comtronics@mail.ru</author>
+
+    <file path="catalog/view/theme/*/template/checkout/simplecheckout.tpl">
+        <operation error="skip">
+            <search><![CDATA[<?php include $simple_footer ?>]]></search>
+            <add position="before" ><![CDATA[
+<style>
+	.disabled-field {
+        background: #F8F8F8;
+		border: 1px solid #CCCCCC;
+		color: #CCCCCC;
+	}
+</style>
+<script type="text/javascript">
+var shipping = $('input[name=shipping_method]:checked').val(), country, zone, city = '';
+var reaction = ["shipping_address[country]", "shipping_address[zone_id]", "shipping_address[city]", "shipping_method", "shipping_address[address_id]", "customer[register]"]
+
+document.body.addEventListener('change', function (e) {
+    console.info('Catch event "' + e.type + '" of element "' + e.target.name + '". Selected value: ' + e.target.value);
+    if (reaction.indexOf(e.target.name) > -1) {
+		e.preventDefault();
+        checkEvent();
+    }
+},true);
+
+function checkEvent() {	
+    $(document).ajaxStop(function () {            
+		country = $('select[name *= country_id]').val();
+		zone = $('select[name *= zone_id]').val();
+		city = $('input[name *= city]').val() != undefined ? $('input[name *= city]').val() : city;
+		shipping = $('input[name=shipping_method]:checked').val();
+			
+			if (shipping.indexOf('kazpost') > -1) { 
+				disableSelect(); 
+			} else {
+                unableSelect();
+            }
+        if (shipping.indexOf('kazpost') > -1 || shipping.indexOf('exline') > -1) {
+            getCities();				
+        } else {
+            restoreInput();
+        }
+    });
+}
+function getCities() {		
+    $.ajax({
+		data: {'shipping_method': shipping, 'country_id': country, 'zone_id': zone},
+		url: 'index.php?route=checkout/kazshipping/autocomplete',
+		dataType: 'json',
+        global: false,
+        success: function (json) {
+            $('input[name *= city]').map(function (i, e) {
+                 $(e).replaceWith('<select name=' + $(e).attr("name") + ' id=' + $(e).attr("id") + ' data-onchange="reloadAll"></select>');
+                 return i;
+            });
+
+            html = '<option value=""> --- Выберите --- </option>';
+            for (i = 0; i < json.length; i++) {
+              html += '<option value="' + json[i]['title'] + '"';
+              if (json[i]['title'] == city) {
+                  html += ' selected="selected"';
+              }
+              html += '>' + json[i]['title'] + '</option>';
+           }
+           $('select[name *= city]').html(html);
+           $('select[name *= city]').change(function () {
+              city = $(this).val();
+              $('input[name=shipping_method]:checked').trigger('change');
+           });
+           //ev = $._data($('select[name *= city]')[0], 'events' )['change'][0]['handler'];
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+           console.log('Ошибка при определении пункта доставки Exline.');
+        }
+	});
+}
+
+function restoreInput() { 
+	$('select[name *= city]').map(function (i, e) {
+         $(e).replaceWith('<input name=' + $(e).attr("name") + ' id=' + $(e).attr("id") + ' value="' + city + '" placeholder="" data-onchange="reloadAll">');
+         $(e).change(function () {
+             $('input[name=shipping_method]:checked').trigger('change');
+         });
+         return i;
+    });
+}
+function disableSelect() { 
+	$('select[name *= zone_id]').map(function (i, e) {
+		$(e).attr("disabled","disabled");
+		$(e).addClass("disabled-field");
+		return i;	
+	});	
+}
+function unableSelect() { 
+	$('select[name *= zone_id]').map(function (i, e) {
+         $(e).removeAttr("disabled");
+		 $(e).removeClass("disabled-field");
+         $(e).change(function () {
+             $('input[name=shipping_method]:checked').trigger('change');
+         });
+         return i;
+    });
+}
+
+$(function () {
+    if (shipping !== undefined) {
+        if (shipping.indexOf('kazpost') > -1 || shipping.indexOf('exline') > -1) {
+			$('[name *= city]').val('');
+			$('[name *= zone_id]').prop('selectedIndex', 0);
+        }
+		$('input[name=shipping_method]:checked').trigger('change');
+		checkEvent();
+		if (shipping.indexOf('kazpost') > -1) {		
+			disableSelect();	
+		}
+    }
+});
+</script>
+            ]]></add>
+        </operation>
+    </file>
+
+    <file path="catalog/view/theme/*/template/checkout/shipping_address.tpl">
+        <operation error="skip">
+            <search index='1'><![CDATA[<script type="text/javascript"><!--]]></search>
+            <add position="before" ><![CDATA[
+		<style>
+		.dropdown-menu {
+                    max-height: 200px;
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                    padding-right: 20px;
+                    font-size: 12px;
+		}
+		</style>
+            ]]></add>
+        </operation>
+        <operation>
+            <search><![CDATA[$('#collapse-shipping-address select[name=\'country_id\']').trigger('change');]]></search>
+            <add position="before" ><![CDATA[
+		$('#collapse-shipping-address select[name=\'zone_id\']').on('change', function(e) {
+                    shipping = $('input[name=shipping_method]:checked').val();
+                    country = $('#collapse-shipping-address select[name=\'country_id\']').val();
+                    zone = $('#collapse-shipping-address select[name=\'zone_id\']').val();
+                    if (zone === null) {zone = '<?php echo $address['zone_id']; ?>';}
+
+                    if (shipping !== undefined) {
+                    if (shipping.indexOf('kazpost') > -1 || shipping.indexOf('exline') > -1) {
+			processing = shipping.split('.')[0] + '/autocomplete';
+			$('input[name *= city]').autocomplete({
+                            'source': function (request, response) {
+                                $.ajax({
+                                    url: 'index.php?route=checkout/' + processing + '&country_id=' + country + '&zone_id=' + zone,
+				dataType: 'json',
+				//	global: false,
+				success: function (json) {
+				response($.map(json, function (item) {
+				return {
+				label: item['title'],
+				value: item['id']
+				}
+				}));
+				},
+				error: function (xhr, ajaxOptions, thrownError) {
+				console.log('Ошибка при определении пункта доставки Exline.');
+				}
+			});
+			},
+			'select': function (item) {
+			$('input[name *= city]').val(item['label']);
+			},
+			'focus': function (event, ui) {
+			return false;
+			},
+			});
+			}
+			}
+			});
+			var shipping, country, zone, processing;
+			$('#collapse-shipping-address select[name=\'zone_id\']').trigger('change');
+            ]]></add>
+        </operation>
+    </file>
+</modification>
