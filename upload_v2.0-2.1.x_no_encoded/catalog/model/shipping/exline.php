@@ -135,14 +135,14 @@ class ModelShippingExline extends Model {
                 $quote_data['exline_standard'] = array(
                     'code' => 'exline.exline_standard',
                     'title' => $this->language->get('text_description') . ' Стандарт',
-                    'cost' => 0,
+                    'cost' => $this->currency->convert(0, 'KZT', $this->config->get('config_currency')),
                     'tax_class_id' => $this->config->get('exline_tax_class_id'),
                     'text' => $this->language->get('error_destination_city')
                 );
                 $quote_data['exline_express'] = array(
                     'code' => 'exline.exline_express',
                     'title' => $this->language->get('text_description') . ' Экспресс',
-                    'cost' => 0,
+                    'cost' => $this->currency->convert(0, 'KZT', $this->config->get('config_currency')),
                     'tax_class_id' => $this->config->get('exline_tax_class_id'),
                     'text' => $this->language->get('error_destination_city')
                 );
