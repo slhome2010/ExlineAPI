@@ -16,6 +16,7 @@ $_['entry_sort_order'] = 'Порядок сортировки';
 $_['entry_origin']     = 'Пункт отправления';
 $_['entry_insurance']  = 'Объявленная ценность';
 $_['entry_percent']    = 'Страховой процент';
+$_['entry_pricing_policy']    = 'Токен';
 
 // Error
 $_['error_permission'] = 'У Вас нет прав для управления данным модулем!';

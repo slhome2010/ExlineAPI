@@ -54,6 +54,30 @@
                                 <?php } ?>
                             </select>
                         </div>
+                    </div>                    
+					<div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-insurance"><?php echo $entry_insurance; ?></label>
+                        <div class="col-sm-10">
+                            <input type="text" name="exline_insurance" value="<?php echo $exline_insurance; ?>" placeholder="<?php echo $entry_insurance; ?>" id="input-insurance" class="form-control" />
+                        </div>
+                    </div>					
+					<div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-percent"><?php echo $entry_percent; ?></label>
+                        <div class="col-sm-10">
+                            <input type="text" name="exline_percent" value="<?php echo $exline_percent; ?>" placeholder="<?php echo $entry_percent; ?>" id="input-percent" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-policy"><?php echo $entry_pricing_policy; ?></label>
+                        <div class="col-sm-10">
+                            <input type="text" name="exline_pricing_policy" value="<?php echo $exline_pricing_policy; ?>" placeholder="<?php echo $entry_pricing_policy; ?>" id="input-policy" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-sort-order"><?php echo $entry_sort_order; ?></label>
+                        <div class="col-sm-10">
+                            <input type="text" name="exline_sort_order" value="<?php echo $exline_sort_order; ?>" placeholder="<?php echo $entry_sort_order; ?>" id="input-sort-order" class="form-control" />
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="input-status"><?php echo $entry_status; ?></label>
@@ -68,25 +92,7 @@
                                 <?php } ?>
                             </select>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label" for="input-sort-order"><?php echo $entry_sort_order; ?></label>
-                        <div class="col-sm-10">
-                            <input type="text" name="exline_sort_order" value="<?php echo $exline_sort_order; ?>" placeholder="<?php echo $entry_sort_order; ?>" id="input-sort-order" class="form-control" />
-                        </div>
-                    </div>
-					<div class="form-group">
-                        <label class="col-sm-2 control-label" for="input-insurance"><?php echo $entry_insurance; ?></label>
-                        <div class="col-sm-10">
-                            <input type="text" name="exline_insurance" value="<?php echo $exline_insurance; ?>" placeholder="<?php echo $entry_insurance; ?>" id="input-insurance" class="form-control" />
-                        </div>
-                    </div>					
-					<div class="form-group">
-                        <label class="col-sm-2 control-label" for="input-percent"><?php echo $entry_percent; ?></label>
-                        <div class="col-sm-10">
-                            <input type="text" name="exline_percent" value="<?php echo $exline_percent; ?>" placeholder="<?php echo $entry_percent; ?>" id="input-percent" class="form-control" />
-                        </div>
-                    </div>
+                    </div>                    
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="input-origin"><span data-toggle="tooltip" title="<?php echo $help_origin; ?>"><?php echo $entry_origin; ?></span></label>
                         <div class="col-sm-10">

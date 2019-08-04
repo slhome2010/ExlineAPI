@@ -1,111 +1,116 @@
-<?php //004fb
-if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
-?>
-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
-UxiASFoNROaqLBsrgrTCLm==
+<?php
+
+include_once(DIR_SYSTEM . 'library/kazshipping/kazshipping.php');
+include_once(DIR_SYSTEM . 'library/kazpost/Classes/PHPExcel/IOFactory.php');
+
+class ControllerCheckoutKazshipping extends Controller {
+
+    public function autocomplete() {
+        $json = array();
+        if (isset($this->request->get['shipping_method'])) {
+            $shipping_method = explode(".", $this->request->get['shipping_method'])[0];
+        }
+
+        if ($shipping_method == "exline") {  // ------------------- Exline -----------------
+            $exline = new Exline();
+
+            $this->load->model('localisation/country');
+            $this->load->model('localisation/zone');
+
+            if (isset($this->request->get['country_id']) && $this->request->get['country_id'] != "undefined") {
+                $iso_code_2 = $this->model_localisation_country->getCountry($this->request->get['country_id'])['iso_code_2'];
+            } else {
+                $iso_code_2 = DEFAULT_ISO;
+            }
+
+            if (isset($this->request->get['zone_id'])) {
+                $zone_id = $this->request->get['zone_id'];
+                $zone = $this->model_localisation_zone->getZone($zone_id)['name'];
+            } else {
+                $zone_id = '0';
+                $zone = '';
+            }
+
+            $city_data = $this->cache->get('city.' . (int) $zone_id);
+
+            if (!$city_data) {
+                $destination_all_regions = $this->cache->get('exline_all_regions');
+                if (!$destination_all_regions || isset($destination_all_regions['error'])) {
+                    $url = DESTINATIONS_ALL_REGIONS_URL . $iso_code_2;
+                    $destination_all_regions = $exline->connect($url);
+                    $this->cache->set('exline_all_regions', $destination_all_regions);
+                }
+                // определим только те нас. пункты, которые входят в регион (область)
+                $destination_region = array();
+                if (isset($destination_all_regions['regions']) && isset($zone)) {
+                    foreach ($destination_all_regions['regions'] as $region) {
+                        if (strpos($region['cached_path'], trim($zone)) !== false || strpos($zone, trim($region['title'])) !== false) {
+                            $destination_region[] = $region;
+                        }
+                    }
+                }
+
+                foreach ($destination_region as $region) {
+                    $cached_path = explode(',', $region['cached_path']);
+                    $json[] = array(
+                        'id' => $region['id'],
+                        'city_id' => strip_tags(html_entity_decode($region['title'] . (isset($cached_path[2]) ? ', ' . $cached_path[2] : ''), ENT_QUOTES, 'UTF-8')),
+                        'name' => strip_tags(html_entity_decode($region['title'] . (isset($cached_path[2]) ? ', ' . $cached_path[2] : ''), ENT_QUOTES, 'UTF-8')),
+                        'title' => strip_tags(html_entity_decode($region['title'] . (isset($cached_path[2]) ? ', ' . $cached_path[2] : ''), ENT_QUOTES, 'UTF-8'))
+                    );
+                }
+
+                $sort_order = array();
+
+                foreach ($json as $key => $value) {
+                    $sort_order[$key] = $value['title'];
+                }
+
+                array_multisort($sort_order, SORT_ASC, $json);
+                $city_data = $json;
+                $this->cache->set('city.' . (int) $zone_id, $city_data);
+            } else {
+                $json = $city_data;
+            }
+        } else if ($shipping_method == "kazpost") {    // ------------------- Kazpost -----------------
+			$server = $this->config->get('kazpost_api_server');
+			$code =  $server === '2' ? 1 : 0;
+			$file =  $server === '2' ? $this->config->get('kazpost_server2_xls') : $this->config->get('kazpost_server1_xls');
+			
+			$objPHPExcel = PHPExcel_IOFactory::load(DIR_SYSTEM . $file);	
+			$objPHPExcel->setActiveSheetIndexByName($this->config->get('kazpost_fromto_sheetname'));
+			$aSheet = $code ===0 ? $objPHPExcel->getActiveSheet()->toArray(true, true):$objPHPExcel->getActiveSheet()->toArray(true, true, true);
+
+            foreach ($aSheet as $aSheet) {
+                if (is_numeric($aSheet[0])) {
+                    $json[] = array(
+                        'id' => $aSheet[$code],
+                        'city_id' => $aSheet[$code],
+                        'name' => strip_tags(html_entity_decode($aSheet[$code+1], ENT_QUOTES, 'UTF-8')),
+                        'title' => strip_tags(html_entity_decode($aSheet[$code+1], ENT_QUOTES, 'UTF-8'))
+                    );
+                }
+            }
+			
+            $sort_order = array();
+
+            foreach ($json as $key => $value) {
+                $sort_order[$key] = $value['title'];
+            }
+
+            array_multisort($sort_order, SORT_ASC, $json);
+        }
+
+        if (isset($this->request->get['filter_name']) && $this->request->get['filter_name']) {
+            $json_filter = array_filter($json, function($v) {
+                return mb_stristr($v['title'], $this->request->get['filter_name']);
+            });
+        } else {
+            $json_filter = $json;
+        }
+
+        $this->response->addHeader('Content-Type: application/json');
+        $this->response->setOutput(json_encode($json_filter));
+    }
+
+}

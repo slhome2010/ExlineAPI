@@ -1,7 +1,7 @@
 <?php
 
 include_once(DIR_SYSTEM . 'library/kazshipping/kazshipping.php');
-define('MODULE_VERSION', 'v2.1.5');
+define('MODULE_VERSION', 'v2.1.6');
 
 class ControllerShippingExline extends Controller {
 
@@ -38,6 +38,7 @@ class ControllerShippingExline extends Controller {
         $data['entry_origin'] = $this->language->get('entry_origin');
         $data['entry_insurance'] = $this->language->get('entry_insurance');
         $data['entry_percent'] = $this->language->get('entry_percent');
+        $data['entry_pricing_policy'] = $this->language->get('entry_pricing_policy');
 
         $data['help_origin'] = $this->language->get('help_origin');
 
@@ -119,6 +120,12 @@ class ControllerShippingExline extends Controller {
             $data['exline_percent'] = $this->config->get('exline_percent');
         }
 
+        if (isset($this->request->post['exline_pricing_policy'])) {
+            $data['exline_pricing_policy'] = $this->request->post['exline_pricing_policy'];
+        } else {
+            $data['exline_pricing_policy'] = $this->config->get('exline_pricing_policy');
+        }
+
         $this->load->model('localisation/country');
         $data['iso_code_2'] = $this->model_localisation_country->getCountry($this->config->get('config_country_id'))['iso_code_2'];
 
@@ -139,8 +146,8 @@ class ControllerShippingExline extends Controller {
         $data['footer'] = $this->load->controller('common/footer');
 		$data['extension'] = $extension;
 
-        $tpl = version_compare(VERSION, '2.2.0', '>=') ? "" : ".tpl";
-        $this->response->setOutput($this->load->view($extension . 'shipping/exline' . $tpl, $data)); 
+		$tpl = version_compare(VERSION, '2.2.0', '>=') ? "" : ".tpl";
+        $this->response->setOutput($this->load->view($extension . 'shipping/exline' . $tpl, $data));        
     }
 
     protected function validate() {

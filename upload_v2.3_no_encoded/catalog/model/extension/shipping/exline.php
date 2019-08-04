@@ -111,8 +111,6 @@ class ModelShippingExline extends Model {
                 $token = $exline_pricing_policy ? '&pricing_policy=' . $exline_pricing_policy : '';
 
                 $url = CALCULATIONS_URL . $origin_id . '&destination_id=' . $destination_id . '&weight=' . $weight . '&w=' . $width . '&l=' . $length . '&h=' . $height . '&declared_value=' . $declared_value . '&service=standard' . $token;
-                file_put_contents('exline.txt', print_r($url,true),FILE_APPEND);
-                file_put_contents('exline.txt', print_r(PHP_EOL,true),FILE_APPEND);
                 $exline_request_standard = $exline->connect($url);
                 $exline_cost_standard = $exline_request_standard['calculation']['price'] + $exline_request_standard['calculation']['fuel_surplus'] + $exline_request_standard['calculation']['declared_value_fee']; // топл. сбор  + insuranse
 

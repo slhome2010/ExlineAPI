@@ -1,161 +1,172 @@
-<?php //004fb
-if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
-?>
-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
-IhW=
+<?php
+
+require_once(DIR_SYSTEM . 'library/kazshipping/kazshipping.php');
+@require_once(DIR_SYSTEM . 'license/sllic.lic');
+
+class ModelShippingExline extends Model {
+
+    function getQuote($address) {
+        $extension = version_compare(VERSION, '2.3.0', '>=') ? "extension/" : "";
+        $this->load->language($extension . 'shipping/exline');
+
+        $exline = new Exline();
+
+        // проверим, что адрес попадает в геозону
+        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "zone_to_geo_zone WHERE geo_zone_id = '" . (int) $this->config->get('exline_geo_zone_id') . "' AND country_id = '" . (int) $address['country_id'] . "' AND (zone_id = '" . (int) $address['zone_id'] . "' OR zone_id = '0')");
+        $iso_code_2 = isset($address['iso_code_2']) ? $address['iso_code_2'] : DEFAULT_ISO; // выделим код страны
+
+        if (!$this->config->get('exline_geo_zone_id')) {
+            $status = true;
+        } elseif ($query->num_rows) {
+            $status = true;
+        } else {
+            $status = false;
+        }
+
+        $quote_data = array();
+        //file_put_contents('exline.txt', print_r($address,true), FILE_APPEND);
+        if ($status) {
+            // Проверим, что для указанной страны вообще существует доставка
+            $destination_all_regions = $this->cache->get('exline_all_regions');
+            // file_put_contents('exline.txt', print_r($destination_all_regions,true), FILE_APPEND);
+            if (!$destination_all_regions || isset($destination_all_regions['error'])) {
+                $url = DESTINATIONS_ALL_REGIONS_URL . $iso_code_2;
+                $destination_all_regions = $exline->connect($url);
+                $this->cache->set('exline_all_regions', $destination_all_regions);
+            }
+
+            $destination_region = array();
+            if (isset($destination_all_regions['regions']) && isset($address['zone']) && $address['zone'] != "") {
+                // Разберем  "cached_path":"Казахстан, Акмолинская область, Буландынский район" чтоб выделить область, указанную в адресе
+                foreach ($destination_all_regions['regions'] as $region) {
+                    if (strpos($region['cached_path'], trim($address['zone'])) !== false || strpos($address['zone'], trim($region['title'])) !== false) {
+                        $destination_region[] = $region;
+                    }
+                }
+            }
+
+            $destination_city = array();
+
+            if ($destination_region) {
+                // получим список пунктов назначения
+                $url = DESTINATIONS_URL . rawurlencode(explode(',', $address['city'])[0]);
+                $destination_cities = $exline->connect($url);
+
+                //  входит ли найденное в региональный список
+                foreach ($destination_region as $region) {
+                    foreach ($destination_cities['regions'] as $city) {
+                        if ($city === $region) {
+                            $destination_city[] = $city;
+                        }
+                    }
+                }
+            }
+
+            // расчет стоимости этой доставки
+            if ($destination_city) {
+                // проверим лицензию
+                if (class_exists('Vendor')) {
+                    $vendor = new Vendor();
+                }
+                $vendor->franchise();
+
+                // Прикинем вес
+                if ($this->config->get('config_weight_class_id') == 1) {
+                    $weight = $this->cart->getWeight();
+                } else {
+                    $weight = $this->cart->getWeight() / 1000;
+                }
+
+                // Прикинем габариты
+                $products = $this->cart->getProducts();
+                $w = [];
+                $h = [];
+                $l = [];
+                foreach ($products as $product) {
+                    if ($product['length_class_id'] == 1) {
+                        $w[] = $product['width'];
+                        $h[] = $product['height'];
+                        $l[] = $product['length'];
+                    } else {
+                        $w[] = $product['width'] / 10;
+                        $h[] = $product['height'] / 10;
+                        $l[] += $product['length'] / 10;
+                    }
+                }
+                $width = max($w);
+                $height = max($h);
+                $length = max($l);
+
+                // учтем страховку
+                if ($this->config->get('exline_insurance')) {
+                    $declared_value = $this->config->get('exline_insurance');
+                } else {
+                    $declared_value = '15000';
+                }
+
+                $destination_id = (string) $destination_city[0]['id'];
+                // вспомним пункт отправления и токен
+                $origin_id = $this->config->get('exline_origin_id');
+                $exline_pricing_policy = $this->config->get('exline_pricing_policy');
+                $token = $exline_pricing_policy ? '&pricing_policy=' . $exline_pricing_policy : '';
+
+                $url = CALCULATIONS_URL . $origin_id . '&destination_id=' . $destination_id . '&weight=' . $weight . '&w=' . $width . '&l=' . $length . '&h=' . $height . '&declared_value=' . $declared_value . '&service=standard' . $token;
+                $exline_request_standard = $exline->connect($url);
+                $exline_cost_standard = $exline_request_standard['calculation']['price'] + $exline_request_standard['calculation']['fuel_surplus'] + $exline_request_standard['calculation']['declared_value_fee']; // топл. сбор  + insuranse
+
+                $url = CALCULATIONS_URL . $origin_id . '&destination_id=' . $destination_id . '&weight=' . $weight . '&w=' . $width . '&l=' . $length . '&h=' . $height . '&declared_value=' . $declared_value . '&service=express' . $token;
+                $exline_request_express = $exline->connect($url);
+                $exline_cost_express = $exline_request_express['calculation']['price'] + $exline_request_express['calculation']['fuel_surplus'] + $exline_request_express['calculation']['declared_value_fee'];
+
+                $quote_data['exline_standard'] = array(
+                    'code' => 'exline.exline_standard',
+                    'title' => $this->language->get('text_description') . ' Стандарт',
+                    'cost' => $exline_cost_standard,
+                    'tax_class_id' => $this->config->get('exline_tax_class_id'),
+                    'text' => $this->currency->format($this->tax->calculate($this->currency->convert($exline_cost_standard, 'KZT', $this->session->data['currency']), $this->config->get('exline_tax_class_id'), $this->config->get('config_tax')), $this->session->data['currency'], 1) . '   ' . ((strtolower($exline_request_standard['calculation']['human_range']) === 'no data') ? '' : $exline_request_standard['calculation']['human_range'])
+                );
+                $quote_data['exline_express'] = array(
+                    'code' => 'exline.exline_express',
+                    'title' => $this->language->get('text_description') . ' Экспресс',
+                    'cost' => $exline_cost_express,
+                    'tax_class_id' => $this->config->get('exline_tax_class_id'),
+                    'text' => $this->currency->format($this->tax->calculate($this->currency->convert($exline_cost_express, 'KZT', $this->session->data['currency']), $this->config->get('exline_tax_class_id'), $this->config->get('config_tax')), $this->session->data['currency'], 1) . '   ' . ((strtolower($exline_request_express['calculation']['human_range']) === 'no data') ? '' : $exline_request_express['calculation']['human_range'])
+                );
+            } else {
+
+                $quote_data['exline_standard'] = array(
+                    'code' => 'exline.exline_standard',
+                    'title' => $this->language->get('text_description') . ' Стандарт',
+                    'cost' => $this->currency->convert(0, 'KZT', $this->config->get('config_currency')),
+                    'tax_class_id' => $this->config->get('exline_tax_class_id'),
+                    'text' => $this->language->get('error_destination_city')
+                );
+                $quote_data['exline_express'] = array(
+                    'code' => 'exline.exline_express',
+                    'title' => $this->language->get('text_description') . ' Экспресс',
+                    'cost' => $this->currency->convert(0, 'KZT', $this->config->get('config_currency')),
+                    'tax_class_id' => $this->config->get('exline_tax_class_id'),
+                    'text' => $this->language->get('error_destination_city')
+                );
+            }
+        }
+        // теперь выдача результатов расчета на checkout
+        $method_data = array();
+
+        if ($quote_data) {
+            $method_data = array(
+                'code' => 'exline',
+                'title' => $this->language->get('text_title'),
+                'quote' => $quote_data,
+                'sort_order' => $this->config->get('exline_sort_order'),
+                'error' => false
+            );
+        }
+        return $method_data;
+    }
+
+}
+
+class ModelExtensionShippingExline extends ModelShippingExline {
+
+}
