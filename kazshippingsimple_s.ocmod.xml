@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <modification>
     <name>Kazshipping</name>
-    <code>kazshipping_simplecheckout_2.1</code>
-    <version>2.1.5(v2.0.x-2.3.x)(select)</version>
+    <code>kazshipping_simplecheckout(s)</code>
+    <version>2.1.6(v2.0.x-2.3.x)select</version>
     <author>comtronics@mail.ru</author>
 
     <file path="catalog/view/theme/*/template/checkout/simplecheckout.tpl">

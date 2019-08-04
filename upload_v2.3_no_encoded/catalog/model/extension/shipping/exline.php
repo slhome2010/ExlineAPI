@@ -105,14 +105,18 @@ class ModelShippingExline extends Model {
                 }
 
                 $destination_id = (string) $destination_city[0]['id'];
-                // вспомним пункт отправления
+                // вспомним пункт отправления и токен
                 $origin_id = $this->config->get('exline_origin_id');
+                $exline_pricing_policy = $this->config->get('exline_pricing_policy');
+                $token = $exline_pricing_policy ? '&pricing_policy=' . $exline_pricing_policy : '';
 
-                $url = CALCULATIONS_URL . $origin_id . '&destination_id=' . $destination_id . '&weight=' . $weight . '&w=' . $width . '&l=' . $length . '&h=' . $height . '&declared_value=' . $declared_value . '&service=standard';
+                $url = CALCULATIONS_URL . $origin_id . '&destination_id=' . $destination_id . '&weight=' . $weight . '&w=' . $width . '&l=' . $length . '&h=' . $height . '&declared_value=' . $declared_value . '&service=standard' . $token;
+                file_put_contents('exline.txt', print_r($url,true),FILE_APPEND);
+                file_put_contents('exline.txt', print_r(PHP_EOL,true),FILE_APPEND);
                 $exline_request_standard = $exline->connect($url);
                 $exline_cost_standard = $exline_request_standard['calculation']['price'] + $exline_request_standard['calculation']['fuel_surplus'] + $exline_request_standard['calculation']['declared_value_fee']; // топл. сбор  + insuranse
 
-                $url = CALCULATIONS_URL . $origin_id . '&destination_id=' . $destination_id . '&weight=' . $weight . '&w=' . $width . '&l=' . $length . '&h=' . $height . '&declared_value=' . $declared_value . '&service=express';
+                $url = CALCULATIONS_URL . $origin_id . '&destination_id=' . $destination_id . '&weight=' . $weight . '&w=' . $width . '&l=' . $length . '&h=' . $height . '&declared_value=' . $declared_value . '&service=express' . $token;
                 $exline_request_express = $exline->connect($url);
                 $exline_cost_express = $exline_request_express['calculation']['price'] + $exline_request_express['calculation']['fuel_surplus'] + $exline_request_express['calculation']['declared_value_fee'];
 

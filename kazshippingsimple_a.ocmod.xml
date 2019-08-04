@@ -2,7 +2,7 @@
 <modification>
     <name>Kazshipping</name>
     <code>kazshipping_simplecheckout(a)</code>
-    <version>2.1.5(v2.0.x-2.3.x)(autocomplete)</version>
+    <version>2.1.6(v2.0.x-2.3.x)autocomplete</version>
     <author>comtronics@mail.ru</author>
 
     <file path="catalog/view/theme/*/template/checkout/simplecheckout.tpl">		
