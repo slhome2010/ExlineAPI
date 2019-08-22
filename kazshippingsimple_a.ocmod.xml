@@ -15,6 +15,13 @@
 		border: 1px solid #CCCCCC;
 		color: #CCCCCC;
 	}
+	.dropdown-menu {
+                    max-height: 200px;
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                    padding-right: 20px;
+                    font-size: 12px;
+		}
 </style>
 <script type="text/javascript">
 var shipping = $('input[name=shipping_method]:checked').val(), country, zone, city = '';

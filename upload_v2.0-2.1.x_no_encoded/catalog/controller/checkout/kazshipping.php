@@ -1,7 +1,7 @@
 <?php
 
-include_once(DIR_SYSTEM . 'library/kazshipping/kazshipping.php');
-include_once(DIR_SYSTEM . 'library/kazpost/Classes/PHPExcel/IOFactory.php');
+require_once(DIR_SYSTEM . 'library/kazshipping/kazshipping.php');
+require_once(DIR_SYSTEM . 'library/kazpost/Classes/PHPExcel/IOFactory.php');
 
 class ControllerCheckoutKazshipping extends Controller {
 

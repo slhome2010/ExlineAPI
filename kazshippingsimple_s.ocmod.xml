@@ -15,6 +15,13 @@
 		border: 1px solid #CCCCCC;
 		color: #CCCCCC;
 	}
+    .dropdown-menu {
+                    max-height: 200px;
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                    padding-right: 20px;
+                    font-size: 12px;
+		}
 </style>
 <script type="text/javascript">
 var shipping = $('input[name=shipping_method]:checked').val(), country, zone, city = '';
@@ -55,7 +62,7 @@ function getCities() {
         global: false,
         success: function (json) {
             $('input[name *= city]').map(function (i, e) {
-                 $(e).replaceWith('<select name=' + $(e).attr("name") + ' id=' + $(e).attr("id") + ' data-onchange="reloadAll"></select>');
+                 $(e).replaceWith('<select class= "form-control" name=' + $(e).attr("name") + ' id=' + $(e).attr("id") + ' data-onchange="reloadAll"></select>');
                  return i;
             });
 
