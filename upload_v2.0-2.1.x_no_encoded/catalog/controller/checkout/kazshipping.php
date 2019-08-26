@@ -1,17 +1,18 @@
 <?php
 
 require_once(DIR_SYSTEM . 'library/kazshipping/kazshipping.php');
-require_once(DIR_SYSTEM . 'library/kazpost/Classes/PHPExcel/IOFactory.php');
 
-class ControllerCheckoutKazshipping extends Controller {
+class ControllerCheckoutKazshipping extends Controller
+{
 
-    public function autocomplete() {
+    public function autocomplete()
+    {
         $json = array();
         if (isset($this->request->get['shipping_method'])) {
             $shipping_method = explode(".", $this->request->get['shipping_method'])[0];
         }
-
-        if ($shipping_method == "exline") {  // ------------------- Exline -----------------
+        // ------------------- Exline -----------------
+        if ($shipping_method == "exline") {  
             $exline = new Exline();
 
             $this->load->model('localisation/country');
@@ -72,26 +73,28 @@ class ControllerCheckoutKazshipping extends Controller {
             } else {
                 $json = $city_data;
             }
-        } else if ($shipping_method == "kazpost") {    // ------------------- Kazpost -----------------
-			$server = $this->config->get('kazpost_api_server');
-			$code =  $server === '2' ? 1 : 0;
-			$file =  $server === '2' ? $this->config->get('kazpost_server2_xls') : $this->config->get('kazpost_server1_xls');
-			
-			$objPHPExcel = PHPExcel_IOFactory::load(DIR_SYSTEM . $file);	
-			$objPHPExcel->setActiveSheetIndexByName($this->config->get('kazpost_fromto_sheetname'));
-			$aSheet = $code ===0 ? $objPHPExcel->getActiveSheet()->toArray(true, true):$objPHPExcel->getActiveSheet()->toArray(true, true, true);
+        // ------------------- Kazpost -----------------
+        } else if ($shipping_method == "kazpost") {
+            require_once(DIR_SYSTEM . 'library/kazpost/Classes/PHPExcel/IOFactory.php');
+            $server = $this->config->get('kazpost_api_server');
+            $code =  $server === '2' ? 1 : 0;
+            $file =  $server === '2' ? $this->config->get('kazpost_server2_xls') : $this->config->get('kazpost_server1_xls');
+
+            $objPHPExcel = PHPExcel_IOFactory::load(DIR_SYSTEM . $file);
+            $objPHPExcel->setActiveSheetIndexByName($this->config->get('kazpost_fromto_sheetname'));
+            $aSheet = $code === 0 ? $objPHPExcel->getActiveSheet()->toArray(true, true) : $objPHPExcel->getActiveSheet()->toArray(true, true, true);
 
             foreach ($aSheet as $aSheet) {
                 if (is_numeric($aSheet[0])) {
                     $json[] = array(
                         'id' => $aSheet[$code],
                         'city_id' => $aSheet[$code],
-                        'name' => strip_tags(html_entity_decode($aSheet[$code+1], ENT_QUOTES, 'UTF-8')),
-                        'title' => strip_tags(html_entity_decode($aSheet[$code+1], ENT_QUOTES, 'UTF-8'))
+                        'name' => strip_tags(html_entity_decode($aSheet[$code + 1], ENT_QUOTES, 'UTF-8')),
+                        'title' => strip_tags(html_entity_decode($aSheet[$code + 1], ENT_QUOTES, 'UTF-8'))
                     );
                 }
             }
-			
+
             $sort_order = array();
 
             foreach ($json as $key => $value) {
@@ -102,7 +105,7 @@ class ControllerCheckoutKazshipping extends Controller {
         }
 
         if (isset($this->request->get['filter_name']) && $this->request->get['filter_name']) {
-            $json_filter = array_filter($json, function($v) {
+            $json_filter = array_filter($json, function ($v) {
                 return mb_stristr($v['title'], $this->request->get['filter_name']);
             });
         } else {
@@ -112,5 +115,4 @@ class ControllerCheckoutKazshipping extends Controller {
         $this->response->addHeader('Content-Type: application/json');
         $this->response->setOutput(json_encode($json_filter));
     }
-
 }
