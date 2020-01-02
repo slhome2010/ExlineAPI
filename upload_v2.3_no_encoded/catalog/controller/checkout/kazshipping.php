@@ -73,7 +73,7 @@ class ControllerCheckoutKazshipping extends Controller
             } else {
                 $json = $city_data;
             }
-        // ------------------- Kazpost -----------------
+        // ------------------- Kazpost -----------------------------------------------
         } else if ($shipping_method == "kazpost") {
             require_once(DIR_SYSTEM . 'library/kazpost/Classes/PHPExcel/IOFactory.php');
             $server = $this->config->get('kazpost_api_server');
