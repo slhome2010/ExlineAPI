@@ -5,7 +5,7 @@ ROBOCOPY .\upload_v2.3_no_encoded\admin\view\template\extension\shipping .\PHP5.
 ROBOCOPY .upload_v2.3_no_encoded\admin\language\ru-ru\extension .\PHP5.4-5.6\upload_v2.0-2.1.x\admin\language\russian\ * /S
 ROBOCOPY .upload_v2.3_no_encoded\admin\language\ru-ru\extension .\PHP5.4-5.6\upload_v2.3.x\admin\language\russian\ * /S
 ROBOCOPY .\upload_v2.3_no_encoded\admin\controller\extension .\PHP5.4-5.6\upload_v2.0-2.1.x\admin\controller\ * /S
-ROBOCOPY .\upload_v2.3_no_encoded\admin\controller\extension .\PHP5.4-5.6\upload_v2.3.x\admin\controller\ * /S
+ROBOCOPY .\upload_v2.3_no_encoded\admin\controller\extension .\PHP5.4-5.6\upload_v2.3.x\admin\controller\extension\ * /S
 ROBOCOPY .\upload_v2.3_no_encoded\catalog\language\ru-ru\extension .\PHP5.4-5.6\upload_v2.0-2.1.x\catalog\language\russian\ * /S
 ROBOCOPY .\upload_v2.3_no_encoded\catalog\language\ru-ru\extension .\PHP5.4-5.6\upload_v2.3.x\catalog\language\russian\ * /S
 ROBOCOPY .\upload_v2.3_no_encoded\catalog\model\localisation .\PHP5.4-5.6\upload_v2.0-2.1.x\catalog\model\localisation\ * /S
@@ -17,7 +17,7 @@ ROBOCOPY .\upload_v2.3_no_encoded\admin\view\template\extension\shipping .\PHP7.
 ROBOCOPY .upload_v2.3_no_encoded\admin\language\ru-ru\extension .\PHP7.1\upload_v2.0-2.1.x\admin\language\russian\ * /S
 ROBOCOPY .upload_v2.3_no_encoded\admin\language\ru-ru\extension .\PHP7.1\upload_v2.3.x\admin\language\russian\ * /S
 ROBOCOPY .\upload_v2.3_no_encoded\admin\controller\extension .\PHP7.1\upload_v2.0-2.1.x\admin\controller\ * /S
-ROBOCOPY .\upload_v2.3_no_encoded\admin\controller\extension .\PHP7.1\upload_v2.3.x\admin\controller\ * /S
+ROBOCOPY .\upload_v2.3_no_encoded\admin\controller\extension .\PHP7.1\upload_v2.3.x\admin\controller\extension\ * /S
 ROBOCOPY .\upload_v2.3_no_encoded\catalog\language\ru-ru\extension .\PHP7.1\upload_v2.0-2.1.x\catalog\language\russian\ * /S
 ROBOCOPY .\upload_v2.3_no_encoded\catalog\language\ru-ru\extension .\PHP7.1\upload_v2.3.x\catalog\language\russian\ * /S
 ROBOCOPY .\upload_v2.3_no_encoded\catalog\model\localisation .\PHP7.1\upload_v2.0-2.1.x\catalog\model\localisation\ * /S
