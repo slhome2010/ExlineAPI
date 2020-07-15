@@ -24,7 +24,6 @@ vqmod/mods.cache
 
 # myProjects settings
 *.code-workspace
-*.zip
 *.iep
 wtools-win32-ia32/
 nbproject/
