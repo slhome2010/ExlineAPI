@@ -22,3 +22,15 @@ ROBOCOPY .\upload_v2.3_no_encoded\catalog\language\ru-ru\extension .\PHP7.1\uplo
 ROBOCOPY .\upload_v2.3_no_encoded\catalog\language\ru-ru\extension .\PHP7.1\upload_v2.3.x\catalog\language\russian\ * /S
 ROBOCOPY .\upload_v2.3_no_encoded\catalog\model\localisation .\PHP7.1\upload_v2.0-2.1.x\catalog\model\localisation\ * /S
 ROBOCOPY .\upload_v2.3_no_encoded\catalog\model\localisation .\PHP7.1\upload_v2.3.x\catalog\model\localisation\ * /S
+ROBOCOPY .\upload_v2.3_no_encoded\admin\view\stylesheet .\PHP7.2\upload_v2.0-2.1.x\admin\view\stylesheet\ * /S
+ROBOCOPY .\upload_v2.3_no_encoded\admin\view\stylesheet .\PHP7.2\upload_v2.3.x\admin\view\stylesheet\ * /S
+ROBOCOPY .\upload_v2.3_no_encoded\admin\view\template\extension\shipping .\PHP7.2\upload_v2.0-2.1.x\admin\view\template\shipping\ * /S
+ROBOCOPY .\upload_v2.3_no_encoded\admin\view\template\extension\shipping .\PHP7.2\upload_v2.3.x\admin\view\template\shipping\ * /S
+ROBOCOPY .upload_v2.3_no_encoded\admin\language\ru-ru\extension .\PHP7.2\upload_v2.0-2.1.x\admin\language\russian\ * /S
+ROBOCOPY .upload_v2.3_no_encoded\admin\language\ru-ru\extension .\PHP7.2\upload_v2.3.x\admin\language\russian\ * /S
+ROBOCOPY .\upload_v2.3_no_encoded\admin\controller\extension .\PHP7.2\upload_v2.0-2.1.x\admin\controller\ * /S
+ROBOCOPY .\upload_v2.3_no_encoded\admin\controller\extension .\PHP7.2\upload_v2.3.x\admin\controller\extension\ * /S
+ROBOCOPY .\upload_v2.3_no_encoded\catalog\language\ru-ru\extension .\PHP7.2\upload_v2.0-2.1.x\catalog\language\russian\ * /S
+ROBOCOPY .\upload_v2.3_no_encoded\catalog\language\ru-ru\extension .\PHP7.2\upload_v2.3.x\catalog\language\russian\ * /S
+ROBOCOPY .\upload_v2.3_no_encoded\catalog\model\localisation .\PHP7.2\upload_v2.0-2.1.x\catalog\model\localisation\ * /S
+ROBOCOPY .\upload_v2.3_no_encoded\catalog\model\localisation .\PHP7.2\upload_v2.3.x\catalog\model\localisation\ * /S
