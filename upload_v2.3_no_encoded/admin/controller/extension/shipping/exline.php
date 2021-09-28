@@ -1,16 +1,37 @@
 <?php
 
 include_once(DIR_SYSTEM . 'library/kazshipping/kazshipping.php');
-define('MODULE_VERSION', 'v2.1.6');
+define('MODULE_VERSION', 'v2.1.7');
 
 class ControllerShippingExline extends Controller {
 
     private $error = array();
+    private $token;
 
     public function index() {
         $extension = version_compare(VERSION, '2.3.0', '>=') ? "extension/" : "";
         $link = version_compare(VERSION, '2.3.0', '>=') ? "extension/extension" : "extension/shipping";
-        $this->load->language($extension . 'shipping/exline');
+
+        if (version_compare(VERSION, '3.0.0', '>=')) {
+            $link = "marketplace/extension";
+        }
+
+        if (version_compare(VERSION, '2.2.0', '>=')) {
+            $this->load->language($extension . 'shipping/exline');
+            $ssl = true;
+        } else {
+            $this->language->load('shipping/exline');
+            $ssl = 'SSL';
+        }
+
+        if (isset($this->session->data['user_token'])) {
+            $this->token = $this->session->data['user_token'];
+            $token_name = 'user_token';
+        }
+        if (isset($this->session->data['token'])) {
+            $this->token = $this->session->data['token'];
+            $token_name = 'token';
+        }
 
         $this->document->setTitle($this->language->get('heading_title'));
 
@@ -21,7 +42,12 @@ class ControllerShippingExline extends Controller {
 
             $this->session->data['success'] = $this->language->get('text_success');
 
-            $this->response->redirect($this->url->link($link, 'token=' . $this->session->data['token'], 'SSL'));
+            /* $this->response->redirect($this->url->link($link, 'token=' . $this->session->data['token'], 'SSL')); */
+            if (version_compare(VERSION, '2.0.1', '>=')) { // иначе вылетает из админки
+                $this->response->redirect($this->url->link($link, $token_name . '=' . $this->token . '&type=shipping', $ssl));
+            } else {
+                $this->redirect($this->url->link($link, $token_name . '=' . $this->token, $ssl));
+            }
         }
 
         $data['heading_title'] = $this->language->get('heading_title') . ' ' . MODULE_VERSION;
@@ -57,24 +83,25 @@ class ControllerShippingExline extends Controller {
 
         $data['breadcrumbs'][] = array(
             'text' => $this->language->get('text_home'),
-            'href' => $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], 'SSL')
+            'href' => $this->url->link('common/dashboard', $token_name . '=' . $this->token, $ssl),
+            'separator' => false
         );
 
         $data['breadcrumbs'][] = array(
             'text' => version_compare(VERSION, '2.3.0', '>=') ? $this->language->get('text_extension') : $this->language->get('text_shipping'),
-            'href' => $this->url->link($link, 'token=' . $this->session->data['token'], 'SSL')
+            'href' => $this->url->link($link, $token_name . '=' . $this->token . '&type=shipping', $ssl),
+            'separator' => ' :: '
         );
 
         $data['breadcrumbs'][] = array(
             'text' => $this->language->get('heading_title'),
-            'href' => $this->url->link($extension . 'shipping/exline', 'token=' . $this->session->data['token'], 'SSL')
+            'href' => $this->url->link($extension . 'shipping/exline', $token_name . '=' . $this->token, $ssl),
+            'separator' => ' :: '
         );
 
-        $data['action'] = $this->url->link($extension . 'shipping/exline', 'token=' . $this->session->data['token'], 'SSL');
-
-        $data['cancel'] = $this->url->link($link, 'token=' . $this->session->data['token'], 'SSL');
-
-        $data['token'] = $this->session->data['token'];
+        $data['action'] = $this->url->link($extension . 'shipping/exline', $token_name . '=' . $this->token, $ssl);
+        $data['cancel'] = $this->url->link($link, $token_name . '=' . $this->token . '&type=shipping', $ssl);
+        $data['token'] = $this->token;
 
         if (isset($this->request->post['exline_tax_class_id'])) {
             $data['exline_tax_class_id'] = $this->request->post['exline_tax_class_id'];
@@ -147,7 +174,7 @@ class ControllerShippingExline extends Controller {
 		$data['extension'] = $extension;
 
 		$tpl = version_compare(VERSION, '2.2.0', '>=') ? "" : ".tpl";
-        $this->response->setOutput($this->load->view($extension . 'shipping/exline' . $tpl, $data));        
+        $this->response->setOutput($this->load->view($extension . 'shipping/exline' . $tpl, $data));
     }
 
     protected function validate() {
