@@ -7,15 +7,16 @@ class ModelShippingExline extends Model {
 
     function getQuote($address) {
         $extension = version_compare(VERSION, '2.3.0', '>=') ? "extension/" : "";
+        $shipping = version_compare(VERSION, '3.0.0', '>=') ? "shipping_" : "";
         $this->load->language($extension . 'shipping/exline');
 
         $exline = new Exline();
 
         // проверим, что адрес попадает в геозону
-        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "zone_to_geo_zone WHERE geo_zone_id = '" . (int) $this->config->get('exline_geo_zone_id') . "' AND country_id = '" . (int) $address['country_id'] . "' AND (zone_id = '" . (int) $address['zone_id'] . "' OR zone_id = '0')");
+        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "zone_to_geo_zone WHERE geo_zone_id = '" . (int) $this->config->get($shipping . 'exline_geo_zone_id') . "' AND country_id = '" . (int) $address['country_id'] . "' AND (zone_id = '" . (int) $address['zone_id'] . "' OR zone_id = '0')");
         $iso_code_2 = isset($address['iso_code_2']) ? $address['iso_code_2'] : DEFAULT_ISO; // выделим код страны
 
-        if (!$this->config->get('exline_geo_zone_id')) {
+        if (!$this->config->get($shipping . 'exline_geo_zone_id')) {
             $status = true;
         } elseif ($query->num_rows) {
             $status = true;
@@ -98,16 +99,16 @@ class ModelShippingExline extends Model {
                 $length = max($l);
 
                 // учтем страховку
-                if ($this->config->get('exline_insurance')) {
-                    $declared_value = $this->config->get('exline_insurance');
+                if ($this->config->get($shipping . 'exline_insurance')) {
+                    $declared_value = $this->config->get($shipping . 'exline_insurance');
                 } else {
                     $declared_value = '15000';
                 }
 
                 $destination_id = (string) $destination_city[0]['id'];
                 // вспомним пункт отправления и токен
-                $origin_id = $this->config->get('exline_origin_id');
-                $exline_pricing_policy = $this->config->get('exline_pricing_policy');
+                $origin_id = $this->config->get($shipping . 'exline_origin_id');
+                $exline_pricing_policy = $this->config->get($shipping . 'exline_pricing_policy');
                 $token = $exline_pricing_policy ? '&pricing_policy=' . $exline_pricing_policy : '';
 
                 $url = CALCULATIONS_URL . $origin_id . '&destination_id=' . $destination_id . '&weight=' . $weight . '&w=' . $width . '&l=' . $length . '&h=' . $height . '&declared_value=' . $declared_value . '&service=standard' . $token;
@@ -122,15 +123,15 @@ class ModelShippingExline extends Model {
                     'code' => 'exline.exline_standard',
                     'title' => $this->language->get('text_description') . ' Стандарт',
                     'cost' => $exline_cost_standard,
-                    'tax_class_id' => $this->config->get('exline_tax_class_id'),
-                    'text' => $this->currency->format($this->tax->calculate($this->currency->convert($exline_cost_standard, 'KZT', $this->session->data['currency']), $this->config->get('exline_tax_class_id'), $this->config->get('config_tax')), $this->session->data['currency'], 1) . '   ' . ((strtolower($exline_request_standard['calculation']['human_range']) === 'no data') ? '' : $exline_request_standard['calculation']['human_range'])
+                    'tax_class_id' => $this->config->get($shipping . 'exline_tax_class_id'),
+                    'text' => $this->currency->format($this->tax->calculate($this->currency->convert($exline_cost_standard, 'KZT', $this->session->data['currency']), $this->config->get($shipping . 'exline_tax_class_id'), $this->config->get('config_tax')), $this->session->data['currency'], 1) . '   ' . ((strtolower($exline_request_standard['calculation']['human_range']) === 'no data') ? '' : $exline_request_standard['calculation']['human_range'])
                 );
                 $quote_data['exline_express'] = array(
                     'code' => 'exline.exline_express',
                     'title' => $this->language->get('text_description') . ' Экспресс',
                     'cost' => $exline_cost_express,
-                    'tax_class_id' => $this->config->get('exline_tax_class_id'),
-                    'text' => $this->currency->format($this->tax->calculate($this->currency->convert($exline_cost_express, 'KZT', $this->session->data['currency']), $this->config->get('exline_tax_class_id'), $this->config->get('config_tax')), $this->session->data['currency'], 1) . '   ' . ((strtolower($exline_request_express['calculation']['human_range']) === 'no data') ? '' : $exline_request_express['calculation']['human_range'])
+                    'tax_class_id' => $this->config->get($shipping . 'exline_tax_class_id'),
+                    'text' => $this->currency->format($this->tax->calculate($this->currency->convert($exline_cost_express, 'KZT', $this->session->data['currency']), $this->config->get($shipping . 'exline_tax_class_id'), $this->config->get('config_tax')), $this->session->data['currency'], 1) . '   ' . ((strtolower($exline_request_express['calculation']['human_range']) === 'no data') ? '' : $exline_request_express['calculation']['human_range'])
                 );
             } else {
 
@@ -138,14 +139,14 @@ class ModelShippingExline extends Model {
                     'code' => 'exline.exline_standard',
                     'title' => $this->language->get('text_description') . ' Стандарт',
                     'cost' => $this->currency->convert(0, 'KZT', $this->config->get('config_currency')),
-                    'tax_class_id' => $this->config->get('exline_tax_class_id'),
+                    'tax_class_id' => $this->config->get($shipping . 'exline_tax_class_id'),
                     'text' => $this->language->get('error_destination_city')
                 );
                 $quote_data['exline_express'] = array(
                     'code' => 'exline.exline_express',
                     'title' => $this->language->get('text_description') . ' Экспресс',
                     'cost' => $this->currency->convert(0, 'KZT', $this->config->get('config_currency')),
-                    'tax_class_id' => $this->config->get('exline_tax_class_id'),
+                    'tax_class_id' => $this->config->get($shipping . 'exline_tax_class_id'),
                     'text' => $this->language->get('error_destination_city')
                 );
             }
@@ -158,7 +159,7 @@ class ModelShippingExline extends Model {
                 'code' => 'exline',
                 'title' => $this->language->get('text_title'),
                 'quote' => $quote_data,
-                'sort_order' => $this->config->get('exline_sort_order'),
+                'sort_order' => $this->config->get($shipping . 'exline_sort_order'),
                 'error' => false
             );
         }

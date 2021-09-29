@@ -10,6 +10,7 @@ class ControllerShippingExline extends Controller {
 
     public function index() {
         $extension = version_compare(VERSION, '2.3.0', '>=') ? "extension/" : "";
+        $shipping = version_compare(VERSION, '3.0.0', '>=') ? "shipping_" : "";
         $link = version_compare(VERSION, '2.3.0', '>=') ? "extension/extension" : "extension/shipping";
 
         if (version_compare(VERSION, '3.0.0', '>=')) {
@@ -38,7 +39,7 @@ class ControllerShippingExline extends Controller {
         $this->load->model('setting/setting');
 
         if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-            $this->model_setting_setting->editSetting('exline', $this->request->post);
+            $this->model_setting_setting->editSetting($shipping . 'exline', $this->request->post);
 
             $this->session->data['success'] = $this->language->get('text_success');
 
@@ -88,7 +89,7 @@ class ControllerShippingExline extends Controller {
         );
 
         $data['breadcrumbs'][] = array(
-            'text' => version_compare(VERSION, '2.3.0', '>=') ? $this->language->get('text_extension') : $this->language->get('text_shipping'),
+            'text' => $this->language->get('text_shipping'),
             'href' => $this->url->link($link, $token_name . '=' . $this->token . '&type=shipping', $ssl),
             'separator' => ' :: '
         );
@@ -102,11 +103,12 @@ class ControllerShippingExline extends Controller {
         $data['action'] = $this->url->link($extension . 'shipping/exline', $token_name . '=' . $this->token, $ssl);
         $data['cancel'] = $this->url->link($link, $token_name . '=' . $this->token . '&type=shipping', $ssl);
         $data['token'] = $this->token;
+        $data['user_token'] = $this->token;
 
-        if (isset($this->request->post['exline_tax_class_id'])) {
-            $data['exline_tax_class_id'] = $this->request->post['exline_tax_class_id'];
+        if (isset($this->request->post[$shipping . 'exline_tax_class_id'])) {
+            $data[$shipping . 'exline_tax_class_id'] = $this->request->post[$shipping . 'exline_tax_class_id'];
         } else {
-            $data['exline_tax_class_id'] = $this->config->get('exline_tax_class_id');
+            $data[$shipping . 'exline_tax_class_id'] = $this->config->get($shipping . 'exline_tax_class_id');
         }
 
         $this->load->model('localisation/tax_class');
@@ -117,63 +119,64 @@ class ControllerShippingExline extends Controller {
 
         $data['geo_zones'] = $this->model_localisation_geo_zone->getGeoZones();
 
-        if (isset($this->request->post['exline_geo_zone_id'])) {
-            $data['exline_geo_zone_id'] = $this->request->post['exline_geo_zone_id'];
+        if (isset($this->request->post[$shipping . 'exline_geo_zone_id'])) {
+            $data[$shipping . 'exline_geo_zone_id'] = $this->request->post[$shipping . 'exline_geo_zone_id'];
         } else {
-            $data['exline_geo_zone_id'] = $this->config->get('exline_geo_zone_id');
+            $data[$shipping . 'exline_geo_zone_id'] = $this->config->get($shipping . 'exline_geo_zone_id');
         }
 
-        if (isset($this->request->post['exline_status'])) {
-            $data['exline_status'] = $this->request->post['exline_status'];
+        if (isset($this->request->post[$shipping . 'exline_status'])) {
+            $data[$shipping . 'exline_status'] = $this->request->post[$shipping . 'exline_status'];
         } else {
-            $data['exline_status'] = $this->config->get('exline_status');
+            $data[$shipping . 'exline_status'] = $this->config->get($shipping . 'exline_status');
         }
 
-        if (isset($this->request->post['exline_sort_order'])) {
-            $data['exline_sort_order'] = $this->request->post['exline_sort_order'];
+        if (isset($this->request->post[$shipping . 'exline_sort_order'])) {
+            $data[$shipping . 'exline_sort_order'] = $this->request->post[$shipping . 'exline_sort_order'];
         } else {
-            $data['exline_sort_order'] = $this->config->get('exline_sort_order');
+            $data[$shipping . 'exline_sort_order'] = $this->config->get($shipping . 'exline_sort_order');
         }
 
-        if (isset($this->request->post['exline_insurance'])) {
-            $data['exline_insurance'] = $this->request->post['exline_insurance'];
+        if (isset($this->request->post[$shipping . 'exline_insurance'])) {
+            $data[$shipping . 'exline_insurance'] = $this->request->post[$shipping . 'exline_insurance'];
         } else {
-            $data['exline_insurance'] = $this->config->get('exline_insurance');
+            $data[$shipping . 'exline_insurance'] = $this->config->get($shipping . 'exline_insurance');
         }
 
         if (isset($this->request->post['exline_percent'])) {
-            $data['exline_percent'] = $this->request->post['exline_percent'];
+            $data[$shipping . 'exline_percent'] = $this->request->post[$shipping . 'exline_percent'];
         } else {
-            $data['exline_percent'] = $this->config->get('exline_percent');
+            $data[$shipping . 'exline_percent'] = $this->config->get($shipping . 'exline_percent');
         }
 
-        if (isset($this->request->post['exline_pricing_policy'])) {
-            $data['exline_pricing_policy'] = $this->request->post['exline_pricing_policy'];
+        if (isset($this->request->post[$shipping . 'exline_pricing_policy'])) {
+            $data[$shipping . 'exline_pricing_policy'] = $this->request->post[$shipping . 'exline_pricing_policy'];
         } else {
-            $data['exline_pricing_policy'] = $this->config->get('exline_pricing_policy');
+            $data[$shipping . 'exline_pricing_policy'] = $this->config->get($shipping . 'exline_pricing_policy');
         }
 
         $this->load->model('localisation/country');
         $data['iso_code_2'] = $this->model_localisation_country->getCountry($this->config->get('config_country_id'))['iso_code_2'];
 
-        if (isset($this->request->post['origin_city'])) {
-            $data['exline_origin_city'] = $this->request->post['exline_origin_city'];
+        if (isset($this->request->post[$shipping . 'origin_city'])) {
+            $data[$shipping . 'exline_origin_city'] = $this->request->post[$shipping . 'exline_origin_city'];
         } else {
-            $data['exline_origin_city'] = $this->config->get('exline_origin_city');
+            $data[$shipping . 'exline_origin_city'] = $this->config->get($shipping . 'exline_origin_city');
         }
 
         if (isset($this->request->post['origin_id'])) {
-            $data['exline_origin_id'] = $this->request->post['exline_origin_id'];
+            $data[$shipping . 'exline_origin_id'] = $this->request->post[$shipping . 'exline_origin_id'];
         } else {
-            $data['exline_origin_id'] = $this->config->get('exline_origin_id');
+            $data[$shipping . 'exline_origin_id'] = $this->config->get($shipping . 'exline_origin_id');
         }
 
         $data['header'] = $this->load->controller('common/header');
         $data['column_left'] = $this->load->controller('common/column_left');
         $data['footer'] = $this->load->controller('common/footer');
-		$data['extension'] = $extension;
+	$data['extension'] = $extension;
+        $data['shipping'] = $shipping;
 
-		$tpl = version_compare(VERSION, '2.2.0', '>=') ? "" : ".tpl";
+	$tpl = version_compare(VERSION, '2.2.0', '>=') ? "" : ".tpl";
         $this->response->setOutput($this->load->view($extension . 'shipping/exline' . $tpl, $data));
     }
 
