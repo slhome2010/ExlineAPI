@@ -1,0 +1,152 @@
+{{header}}{{column_left}}
+<div id="content">
+    <div class="page-header">
+        <div class="container-fluid">
+            <div class="pull-right">
+                <button type="submit" form="form-exline" data-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa fa-save"></i></button>
+                <a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
+            <h1>{{ heading_title }}</h1>
+            <ul class="breadcrumb">
+                {% for breadcrumb in breadcrumbs %}
+                    <li><a href="{{ breadcrumb['href'] }}">{{ breadcrumb['text'] }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="container-fluid">
+        {% if error_warning %}
+            <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+         {% endif %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-pencil"></i> {{ text_edit }}</h3>
+            </div>
+            <div class="panel-body">
+                <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-exline" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-tax-class">{{ entry_tax_class }}</label>
+                        <div class="col-sm-10">
+                          <select name="shipping_exline_tax_class_id" id="input-tax-class" class="form-control">
+                            <option value="0">{{ text_none }}</option>
+                            {% for tax_class in tax_classes %}
+                            {% if tax_class.tax_class_id == shipping_exline_tax_class_id %}
+                            <option value="{{ tax_class.tax_class_id }}" selected="selected">{{ tax_class.title }}</option>
+                            {% else %}
+                            <option value="{{ tax_class.tax_class_id }}">{{ tax_class.title }}</option>
+                            {% endif %}
+                            {% endfor %}
+                          </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-geo-zone">{{ entry_geo_zone }}</label>
+                        <div class="col-sm-10">
+                          <select name="shipping_exline_geo_zone_id" id="input-geo-zone" class="form-control">
+                            <option value="0">{{ text_all_zones }}</option>
+                            {% for geo_zone in geo_zones %}
+                            {% if geo_zone.geo_zone_id == shipping_exline_geo_zone_id %}
+                            <option value="{{ geo_zone.geo_zone_id }}" selected="selected">{{ geo_zone.name }}</option>
+                            {% else %}
+                            <option value="{{ geo_zone.geo_zone_id }}">{{ geo_zone.name }}</option>
+                            {% endif %}
+                            {% endfor %}
+                          </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-insurance">{{ entry_insurance }}</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="shipping_exline_insurance" value="{{ shipping_exline_insurance }}" placeholder="{{ entry_insurance }}" id="input-insurance" class="form-control" />
+                        </div>
+                    </div>
+					<div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-percent">{{ entry_percent }}</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="shipping_exline_percent" value="{{ shipping_exline_percent }}" placeholder="{{ entry_percent }}" id="input-percent" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-policy">{{ entry_pricing_policy }}</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="shipping_exline_pricing_policy" value="{{ shipping_exline_pricing_policy }}" placeholder="{{ entry_pricing_policy }}" id="input-policy" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-sort-order">{{ entry_sort_order }}</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="shipping_exline_sort_order" value="{{ shipping_exline_sort_order }}" placeholder="{{ entry_sort_order }}" id="input-sort-order" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-status">{{ entry_status }}</label>
+                        <div class="col-sm-10">
+                          <select name="shipping_exline_status" id="input-status" class="form-control">
+                            {% if shipping_exline_status %}
+                            <option value="1" selected="selected">{{ text_enabled }}</option>
+                            <option value="0">{{ text_disabled }}</option>
+                            {% else %}
+                            <option value="1">{{ text_enabled }}</option>
+                            <option value="0" selected="selected">{{ text_disabled }}</option>
+                            {% endif %}
+                          </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-origin"><span data-toggle="tooltip" title="{{ help_origin }}">{{ entry_origin }}</span></label>
+                        <div class="col-sm-10">
+                            <input type="text" name="shipping_exline_origin_city" value="{{ shipping_exline_origin_city }}" placeholder="{{ entry_origin }}" id="input-origin" class="form-control" />
+                            <input type="hidden" name="shipping_exline_origin_id" value="{{ shipping_exline_origin_id }}" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .dropdown-menu {
+        max-height: 200px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-right: 20px;
+        font-size: 12px;
+    }
+</style>
+<script type="text/javascript">
+const token = '{{token}}';
+const user_token = '{{user_token}}';
+const extension = '{{extension}}';
+const shipping = '{{shipping}}';
+
+$('input[name=' + shipping + 'exline_origin_city]').autocomplete({
+        source: function (request, response) {
+            $.ajax({
+                data: {
+                            'token': token,
+                            'user_token': user_token,
+                            'iso_code_2': '{{ iso_code_2 }}'
+                        },
+                url: 'index.php?route='+extension+'shipping/exline/autocomplete',
+                dataType: 'json',
+                success: function (json) {
+                    response($.map(json, function (item) {
+                        return {
+                            label: item['title'],
+                            value: item['id']
+                        };
+                    }));
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert('{{ error_origin_country }}>');
+                }
+            });
+        },
+        select: function (item) {
+            $('input[name=' + shipping + 'exline_origin_city]').val(item['label']);
+            $('input[name=' + shipping + 'exline_origin_id]').val(item['value']);
+        }
+    });
+</script>
+{{ footer }}>
